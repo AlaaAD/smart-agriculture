@@ -1,4 +1,4 @@
-package com.tanmay.plant_health
+package com.smart.agriculture
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity

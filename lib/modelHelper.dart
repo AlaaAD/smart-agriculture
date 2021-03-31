@@ -10,6 +10,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: MyApp(),
     );
   }
@@ -31,7 +32,7 @@ class _MyAppState extends State<MyApp> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text("Make a choice! "),
+            title: Text("Faites un choix! "),
             content: SingleChildScrollView(
               child: ListBody(
                 children: <Widget>[
@@ -95,7 +96,7 @@ class _MyAppState extends State<MyApp> {
   Future loadModel() async {
     try {
       await Tflite.loadModel(
-        model: "assets/Tanmay_final_model.tflite",
+        model: "assets/trained_model.tflite",
         labels: "assets/Labels.txt",
       );
     } on PlatformException {
@@ -132,7 +133,10 @@ class _MyAppState extends State<MyApp> {
       top: 0.0,
       left: 0.0,
       width: size.width,
-      child: _image == null ? Text('No image selected.') : Image.file(_image),
+      child: _image == null
+          ? Text('  No image selected.',
+              style: new TextStyle(color: Colors.black, fontSize: 20.0))
+          : Image.file(_image),
     ));
 
     stackChildren.add(Center(
@@ -160,8 +164,8 @@ class _MyAppState extends State<MyApp> {
 //        width: size.width,
         child: RaisedButton(
           onPressed: handleCure,
-          child: Text('Cure'),
-          color: Colors.blue,
+          child: Text('Que dois-je faire ?'),
+          color: Colors.red,
         ),
       ));
     }
@@ -176,7 +180,9 @@ class _MyAppState extends State<MyApp> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Plant Disease Recognition'),
+        title: Text('Reconnaissance des maladies des plantes',
+            style: new TextStyle(color: Colors.white, fontSize: 18.0)),
+        backgroundColor: Colors.red,
       ),
       body: Stack(
         children: stackChildren,
@@ -187,6 +193,7 @@ class _MyAppState extends State<MyApp> {
         },
         tooltip: 'Pick Image',
         child: Icon(Icons.camera),
+        backgroundColor: Colors.red,
       ),
     );
   }

@@ -24,11 +24,11 @@ class _MySplashState extends State<MySplash> {
       seconds: 5,
       backgroundColor: Colors.white,
       image: Image.asset("images/logo.jpeg"),
-      photoSize: 150.0,
+      photoSize: 200.0,
       loaderColor: Colors.green,
       navigateAfterSeconds: App(),
       loadingText: Text(
-        "Welcome to plant Health",
+        "Welcome to SMART AGRICULTURE",
         style: new TextStyle(color: Colors.green, fontSize: 20.0),
       ),
     );
